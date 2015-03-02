@@ -30,11 +30,32 @@
 (unless (package-installed-p 'company)
   (package-install 'company))
 
+(unless (package-installed-p 'go-mode)
+  (package-install 'go-mode))
+
+(unless (package-installed-p 'flycheck)
+  (package-install 'flycheck))
+
 ;; -------
 ;; Company
 ;; -------
 
 (company-mode)
+
+;; -------
+;; Go-mode
+;; -------
+
+(setenv "GOPATH" "~/Workspace/Go")
+(setenv "PATH" (concat (getenv "PATH")
+		       ":"
+		       (getenv "GOPATH") "/bin"))
+(add-to-list 'exec-path
+	     (concat (getenv "GOPATH") "/bin"))
+(add-to-list 'load-path
+	     (concat (getenv "GOPATH")
+		     "/src/github.com/dougm/goflymake"))
+(require 'go-flycheck)
 
 ;; ------------
 ;; Key bindings
