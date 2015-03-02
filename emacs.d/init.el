@@ -36,6 +36,9 @@
 (unless (package-installed-p 'flycheck)
   (package-install 'flycheck))
 
+(unless (package-installed-p 'neotree)
+  (package-install 'neotree))
+
 ;; -------
 ;; Company
 ;; -------
