@@ -73,6 +73,7 @@
 		       (getenv "GOPATH") "/bin"))
 (add-to-list 'exec-path
 	     (concat (getenv "GOPATH") "/bin"))
+(shell-command "go get -u github.com/dougm/goflymake")
 (add-to-list 'load-path
 	     (concat (getenv "GOPATH")
 		     "/src/github.com/dougm/goflymake"))
