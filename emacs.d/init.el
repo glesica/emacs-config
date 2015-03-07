@@ -15,6 +15,9 @@
 ;; Path stuff
 ;; ----------
 
+(setenv "PATH" (concat (getenv "PATH")
+		       ":"
+		       "/usr/local/bin"))
 (add-to-list 'exec-path "/usr/local/bin")
 
 ;; ------------------
@@ -44,6 +47,15 @@
 
 (unless (package-installed-p 'neotree)
   (package-install 'neotree))
+
+(unless (package-installed-p 'alchemist)
+  (package-install 'alchemist))
+
+(unless (package-installed-p 'erlang)
+  (package-install 'erlang))
+
+(unless (package-installed-p 'yaml-mode)
+  (package-install 'yaml-mode))
 
 ;; -------
 ;; Company
