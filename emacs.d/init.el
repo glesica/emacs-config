@@ -63,6 +63,16 @@
 
 (company-mode)
 
+;; -----------
+;; Elixir-mode
+;; -----------
+
+(when (string-equal system-type "darwin")
+  (add-to-list 'exec-path "~/Workspace/elixir/bin")
+  (setenv "PATH" (concat (getenv "PATH")
+			 ":"
+			 "~/Workspace/elixir/bin")))
+
 ;; -------
 ;; Go-mode
 ;; -------
