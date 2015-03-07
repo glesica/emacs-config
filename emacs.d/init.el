@@ -1,3 +1,13 @@
+;; ----------------
+;; Useful functions
+;; ----------------
+
+(defun home-directory ()
+  (getenv "HOME"))
+
+(defun home-sub-directory (sub)
+  (concat (home-directory) "/" sub))
+
 ;; --------------------
 ;; Visual Modifications
 ;; --------------------
@@ -68,10 +78,10 @@
 ;; -----------
 
 (when (string-equal system-type "darwin")
-  (add-to-list 'exec-path "~/Workspace/elixir/bin")
+  (add-to-list 'exec-path (home-sub-directory "Workspace/elixir/bin"))
   (setenv "PATH" (concat (getenv "PATH")
 			 ":"
-			 "~/Workspace/elixir/bin")))
+			 (home-sub-directory "Workspace/elixir/bin"))))
 
 ;; -------
 ;; Go-mode
@@ -79,9 +89,9 @@
 (setenv "GOPATH"
 	(cond
 	 ((string-equal system-type "darwin")
-	  "~/Workspace/Go")
+	  (home-sub-directory "Workspace/Go"))
 	 ((string-equal system-type "gnu/linux")
-	  "~/Go")))
+	  (home-sub-directory "Go"))))
 (setenv "PATH" (concat (getenv "PATH")
 		       ":"
 		       (getenv "GOPATH") "/bin"))
