@@ -66,8 +66,12 @@
 ;; -------
 ;; Go-mode
 ;; -------
-
-(setenv "GOPATH" "~/Workspace/Go")
+(setenv "GOPATH"
+	(cond
+	 ((string-equal system-type "darwin")
+	  "~/Workspace/Go")
+	 ((string-equal system-type "gnu/linux")
+	  "~/Go")))
 (setenv "PATH" (concat (getenv "PATH")
 		       ":"
 		       (getenv "GOPATH") "/bin"))
