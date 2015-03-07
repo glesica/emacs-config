@@ -11,6 +11,12 @@
 ;; Set the color theme
 (load-theme 'tango-dark t)
 
+;; ----------
+;; Path stuff
+;; ----------
+
+(add-to-list 'exec-path "/usr/local/bin")
+
 ;; ------------------
 ;; Package Management
 ;; ------------------
@@ -60,8 +66,23 @@
 		     "/src/github.com/dougm/goflymake"))
 (require 'go-flycheck)
 
+;; -------
+;; Neotree
+;; -------
+
+(global-set-key [f8] 'neotree-toggle)
+
+;; ------
+;; Erlang
+;; ------
+
+(add-to-list 'auto-mode-alist
+	     '("relx.config" . erlang-mode))
+
 ;; ------------
 ;; Key bindings
 ;; ------------
 
 (global-set-key "\C-x\C-d" 'kill-whole-line)
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
