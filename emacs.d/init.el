@@ -71,6 +71,9 @@
 (unless (package-installed-p 'yaml-mode)
   (package-install 'yaml-mode))
 
+(unless (package-installed-p 'julia-mode)
+  (package-install 'julia-mode))
+
 ;; -------
 ;; Company
 ;; -------
