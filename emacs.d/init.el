@@ -8,6 +8,13 @@
 (defun home-sub-directory (sub)
   (concat (home-directory) "/" sub))
 
+(defun add-to-path (dir)
+  (progn
+    (setenv "PATH" (concat (getenv "PATH")
+			   ":"
+			   dir))
+    (add-to-list 'exec-path dir)))
+
 ;; --------------------
 ;; Visual Modifications
 ;; --------------------
@@ -25,10 +32,7 @@
 ;; Path stuff
 ;; ----------
 
-(setenv "PATH" (concat (getenv "PATH")
-		       ":"
-		       "/usr/local/bin"))
-(add-to-list 'exec-path "/usr/local/bin")
+(add-to-path "/usr/local/bin")
 
 ;; ------------------
 ;; Package Management
@@ -78,10 +82,7 @@
 ;; -----------
 
 (when (string-equal system-type "darwin")
-  (add-to-list 'exec-path (home-sub-directory "Workspace/elixir/bin"))
-  (setenv "PATH" (concat (getenv "PATH")
-			 ":"
-			 (home-sub-directory "Workspace/elixir/bin"))))
+  (add-to-path "Workspace/elixir/bin"))
 
 ;; -------
 ;; Go-mode
@@ -92,11 +93,7 @@
 	  (home-sub-directory "Workspace/Go"))
 	 ((string-equal system-type "gnu/linux")
 	  (home-sub-directory "Go"))))
-(setenv "PATH" (concat (getenv "PATH")
-		       ":"
-		       (getenv "GOPATH") "/bin"))
-(add-to-list 'exec-path
-	     (concat (getenv "GOPATH") "/bin"))
+(add-to-path (concat (getenv "GOPATH") "/bin"))
 (shell-command "go get -u github.com/dougm/goflymake")
 (add-to-list 'load-path
 	     (concat (getenv "GOPATH")
