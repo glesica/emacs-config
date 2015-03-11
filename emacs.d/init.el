@@ -86,6 +86,9 @@
 (unless (package-installed-p 'undo-tree)
   (package-install 'undo-tree))
 
+(unless (package-installed-p 'markdown-mode)
+  (package-install 'markdown-mode))
+
 ;; -------
 ;; Company
 ;; -------
