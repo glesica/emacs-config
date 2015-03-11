@@ -28,6 +28,15 @@
 ;; Set the color theme
 (load-theme 'tango-dark t)
 
+;; Turn on line numbers
+(linum-mode)
+
+;; ------------
+;; Interactions
+;; ------------
+
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+
 ;; ----------
 ;; Path stuff
 ;; ----------
