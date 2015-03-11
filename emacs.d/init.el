@@ -29,7 +29,7 @@
 (load-theme 'tango-dark t)
 
 ;; Turn on line numbers
-(linum-mode)
+(global-linum-mode t)
 
 ;; ------------
 ;; Interactions
