@@ -83,6 +83,9 @@
 (unless (package-installed-p 'julia-mode)
   (package-install 'julia-mode))
 
+(unless (package-installed-p 'undo-tree)
+  (package-install 'undo-tree))
+
 ;; -------
 ;; Company
 ;; -------
@@ -124,6 +127,12 @@
 
 (add-to-list 'auto-mode-alist
 	     '("relx.config" . erlang-mode))
+
+;; ---------
+;; Undo-tree
+;; ---------
+
+(global-undo-tree-mode)
 
 ;; ------------
 ;; Key bindings
