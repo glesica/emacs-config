@@ -6,14 +6,24 @@
   (getenv "HOME"))
 
 (defun home-sub-directory (sub)
+  "Returns the absolute path to a file or directory within the home directory."
   (concat (home-directory) "/" sub))
 
 (defun add-to-path (dir)
-  (progn
-    (setenv "PATH" (concat (getenv "PATH")
-			   ":"
-			   dir))
-    (add-to-list 'exec-path dir)))
+  "Adds a directory to both the PATH env variable and the exec-path list."
+  (setenv "PATH" (concat (getenv "PATH")
+			 ":"
+			 dir))
+  (add-to-list 'exec-path dir))
+
+(defun revert-all-buffers ()
+  "Refreshes all open buffers from their respective files unless they have been modified."
+  (interactive)
+  (dolist (buf (buffer-list))
+    (with-current-buffer buf
+      (when (and (buffer-file-name) (file-exists-p (buffer-file-name)) (not (buffer-modified-p)))
+	(revert-buffer t t t))))
+  (message "Refreshed open files."))
 
 ;; --------------------
 ;; Visual Modifications
